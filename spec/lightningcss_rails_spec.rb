@@ -26,7 +26,7 @@ RSpec.describe LightningcssRails::Compressor do
       end
 
       it do
-        expect(Rails.logger).to receive(:info).with(described_class::COMPRESSION_SUCCESS_MESSAGE)
+        expect(STDOUT).to receive(:puts).with(described_class::COMPRESSION_SUCCESS_MESSAGE)
         expect(subject.compress(basic_css)).to eq(compressed_css)
       end
     end
@@ -37,7 +37,7 @@ RSpec.describe LightningcssRails::Compressor do
       end
 
       it do
-        expect(Rails.logger).to receive(:warn).with(described_class::COMPRESSION_FAILURE_MESSAGE)
+        expect(STDOUT).to receive(:puts).with(described_class::COMPRESSION_FAILURE_MESSAGE)
         expect(subject.compress(basic_css)).to eq(basic_css)
       end
     end
@@ -49,7 +49,7 @@ RSpec.describe LightningcssRails::Compressor do
     end
 
     it do
-      expect(Rails.logger).to receive(:warn).with(described_class::LIBRARY_NOT_FOUND_MESSAGE)
+      expect(STDOUT).to receive(:puts).with(described_class::LIBRARY_NOT_FOUND_MESSAGE)
       expect(subject.compress(basic_css)).to eq(basic_css)
     end
   end

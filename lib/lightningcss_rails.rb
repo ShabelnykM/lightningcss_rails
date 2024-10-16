@@ -13,7 +13,7 @@ module LightningcssRails
       if library_enabled?
         process_string(css_string)
       else
-        Rails.logger.warn(LIBRARY_NOT_FOUND_MESSAGE)
+        puts LIBRARY_NOT_FOUND_MESSAGE
         css_string
       end
     end
@@ -28,9 +28,9 @@ module LightningcssRails
       status, css_string = process_files(css_string)
 
       if status
-        Rails.logger.info(COMPRESSION_SUCCESS_MESSAGE)
+        puts COMPRESSION_SUCCESS_MESSAGE
       else
-        Rails.logger.warn(COMPRESSION_FAILURE_MESSAGE)
+        puts COMPRESSION_FAILURE_MESSAGE
       end
 
       css_string
